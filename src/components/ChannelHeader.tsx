@@ -1,29 +1,27 @@
 
 import React from "react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 interface ChannelHeaderProps {
   channelTitle: string;
-  channelDescription?: string;
-  channelThumbnail?: string;
+  channelDescription: string;
+  channelThumbnail: string;
 }
 
 const ChannelHeader: React.FC<ChannelHeaderProps> = ({
   channelTitle,
-  channelDescription = "Смотрите видео с YouTube без VPN",
-  channelThumbnail = "https://via.placeholder.com/100",
+  channelDescription,
+  channelThumbnail,
 }) => {
   return (
-    <div className="flex flex-col md:flex-row items-center gap-4 p-6 mb-8 bg-gradient-to-r from-purple-100 to-indigo-100 rounded-lg">
-      <div className="flex-shrink-0">
-        <img 
-          src={channelThumbnail} 
-          alt={channelTitle} 
-          className="w-20 h-20 rounded-full border-2 border-white shadow-md"
-        />
-      </div>
-      <div className="text-center md:text-left">
-        <h1 className="text-3xl font-bold">{channelTitle}</h1>
-        <p className="text-gray-600 mt-2">{channelDescription}</p>
+    <div className="flex flex-col md:flex-row items-start md:items-center gap-4 mb-8 p-4 bg-card rounded-lg shadow">
+      <Avatar className="w-16 h-16 md:w-24 md:h-24 border-2 border-primary">
+        <AvatarImage src={channelThumbnail} alt={channelTitle} />
+        <AvatarFallback>{channelTitle.slice(0, 2)}</AvatarFallback>
+      </Avatar>
+      <div>
+        <h1 className="text-2xl md:text-3xl font-bold">{channelTitle}</h1>
+        <p className="text-muted-foreground mt-2">{channelDescription}</p>
       </div>
     </div>
   );
