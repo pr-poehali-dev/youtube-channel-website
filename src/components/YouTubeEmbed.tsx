@@ -8,13 +8,13 @@ interface YouTubeEmbedProps {
 
 const YouTubeEmbed: React.FC<YouTubeEmbedProps> = ({ videoId, title = "YouTube video" }) => {
   return (
-    <div className="aspect-w-16 aspect-h-9 w-full overflow-hidden rounded-lg shadow-md">
+    <div className="relative w-full pt-[56.25%]">
       <iframe
+        className="absolute top-0 left-0 w-full h-full rounded-lg shadow-md"
         src={`https://www.youtube-nocookie.com/embed/${videoId}`}
         title={title}
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
-        className="w-full h-full"
       />
     </div>
   );
